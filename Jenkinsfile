@@ -26,6 +26,17 @@ pipeline
 				sh 'ls -l target/'
 			}
 		}
+		stage('SonarQube Analysis') {
+			steps {
+				withSonarQubeEnv('SonarQube') {
+ 			   	sh """
+                    		mvn sonar:sonar \
+                    		-Dsonar.projectKey=${JOB_NAME} \
+                    		-Dsonar.projectName=${JOB_NAME}
+                    		"""
+				}
+			}
+		}
 		stage('Docker Build Image') {
 			steps {
 				sh 'docker build -t mnidevops/$IMAGE_NAME:$BUILD_NUMBER .'
