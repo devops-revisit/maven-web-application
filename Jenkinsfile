@@ -58,5 +58,14 @@ pipeline
 				'''
 			}
 		}
+		stage('Run Container') {
+			steps {
+				sh '''
+				docker run -d -p 8082:8080 \
+				--name ${CONTAINER_NAME} \
+				mnidevops/maven-web-app:${BUILD_NUMBER}
+				'''
+			}
+		}
 	}
 }
