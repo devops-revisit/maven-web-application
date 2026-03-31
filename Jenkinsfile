@@ -21,5 +21,10 @@ pipeline
 				sh 'mvn clean package -DiskipTest'
 			}
 		}
+		stage('Verify Build') {
+			steps {
+				sh 'ls /target'
+			}
+		}
 	}
 }
