@@ -23,7 +23,7 @@ pipeline
 		}
 		stage('Verify Build') {
 			steps {
-				sh 'ls /target'
+				sh 'ls -l target/'
 			}
 		}
 		stage('Docker Build Image') {
