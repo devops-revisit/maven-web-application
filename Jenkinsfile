@@ -28,7 +28,7 @@ pipeline
 		}
 		stage('Docker Build Image') {
 			steps {
-				sh 'docker build mnidevops/$IMAGE_NAME:$BUILD_NUMBER .'
+				sh 'docker build -t mnidevops/$IMAGE_NAME:$BUILD_NUMBER .'
 			}
 		}
 	}
